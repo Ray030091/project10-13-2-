@@ -1,0 +1,78 @@
+<div class="container mt-5 mb-5">
+    <main class="form-signin col-md-4 offset-md-4">
+        <form [formGroup]="registerform">
+   
+            <div class="text-center">
+                <img class="mb-4" src="assets/images/psc-logo.png" alt="" width="100" height="100" priority>
+            </div>
+
+            <div class="text-center">     
+            <h1>register</h1>
+            </div>
+   
+            <div class="form-floating mb-2">
+                <input
+                    formControlName="email"
+                    name="email"
+                    type="email"
+                    class="form-control"
+                    id="floatingInput">
+                <label for="floatingInput">Email</label>
+                @if(submitted && registerform.controls['email'].errors){
+                @if (registerform.controls['email'].errors['required']) {
+                    <div class="text-danger">
+                        กรุณาป้อน Email
+                    </div>
+                }
+                @if(registerform.controls['email'].errors['email']){
+                    <div class="text-danger mt-2">
+                        กรุณาป้อนEmailให้ถูกต้อง
+                    </div>
+                }
+                }
+   
+            </div>
+
+            <div class="form-floating mb-2">
+                <input
+                    formControlName="password"
+                    name="password"
+                    type="password"
+                    class="form-control"
+                    id="floatingPassword">
+                <label for="floatingPassword">Password</label>
+                @if(submitted && registerform.controls['Password'].errors){
+                    @if (registerform.controls['Password'].errors['required']) {
+                        <div class="text-danger">
+                            กรุณาป้อน Password
+                        </div>
+                    }
+                    @if(registerform.controls['Password'].errors['Password']){
+                        <div class="text-danger mt-2">
+                            กรอกรหัสไม่เกิน6ตัวอักษร
+                        </div>
+                    }
+                    }
+   
+            </div>
+   
+            <button
+                class="btn btn-primary w-100 py-2"
+                type="submit"
+                (click)="submitLogin()"
+                >Sign-in
+            </button>
+   
+            <button
+                class="btn btn-warning w-100 py-2 mt-2"
+                type="submit"
+                (click)="resetForm()"
+                >Reset
+            </button>
+   
+            <!-- {{ userLogin.email }}
+            {{ userLogin.password }} -->
+   
+        </form>
+    </main>
+  </div>
